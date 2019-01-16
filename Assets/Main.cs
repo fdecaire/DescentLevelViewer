@@ -1,27 +1,16 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using DescentHogFileReader;
 using UnityEngine;
 
 public class Main : MonoBehaviour
 {
     public Transform pointPrefab;
-    Vector2[] newUV;
-
-    /// <summary>
-    /// Mesh used to generate cube
-    /// </summary>
-    private Mesh cubeMesh;
-
 
     // Start is called before the first frame update
     void Start()
     {
         ReadHogFile();
-        //MakeCube();
     }
 
     private void ReadHogFile()
