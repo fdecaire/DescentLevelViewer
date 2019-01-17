@@ -57,7 +57,7 @@ public class Main : MonoBehaviour
                     foreach (var cube in rdlFile.Cubes)
                     {
                         cube.AddTriangles(triangles);
-                        AddUvs(uvs);
+                        cube.AddUvs(uvs);
                     }
 
                     mesh.triangles = triangles.ToArray();
@@ -86,17 +86,6 @@ public class Main : MonoBehaviour
         }
     }
 
-    private void AddUvs(List<Vector2> uvs)
-    {
-        for (var i = 0; i < 6; i++)
-        {
-            // same uvs for all faces
-            uvs.Add(new Vector2(0, 0));
-            uvs.Add(new Vector2(1, 0));
-            uvs.Add(new Vector2(1, 1));
-            uvs.Add(new Vector2(0, 1));
-        }
-    }
     private void DrawSide()
     {
 

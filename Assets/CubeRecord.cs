@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Assets;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace DescentHogFileReader
@@ -168,6 +169,18 @@ namespace DescentHogFileReader
             triangles.Add(BoxVertices[2]);
             triangles.Add(BoxVertices[3]);
             triangles.Add(BoxVertices[0]);
+        }
+
+        public void AddUvs(List<Vector2> uvs)
+        {
+            for (var i = 0; i < 6; i++)
+            {
+                // same uvs for all faces
+                uvs.Add(new Vector2(0, 0));
+                uvs.Add(new Vector2(1, 0));
+                uvs.Add(new Vector2(1, 1));
+                uvs.Add(new Vector2(0, 1));
+            }
         }
     }
 }
