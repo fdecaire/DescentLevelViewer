@@ -56,7 +56,7 @@ public class Main : MonoBehaviour
                     var uvs = new List<Vector2>();
                     foreach (var cube in rdlFile.Cubes)
                     {
-                        AddTriangles(triangles, cube);
+                        cube.AddTriangles(triangles);
                         AddUvs(uvs);
                     }
 
@@ -69,57 +69,6 @@ public class Main : MonoBehaviour
                     break;
                 }
         }
-    }
-
-    private void AddTriangles(List<int> triangles, CubeRecord cube)
-    {
-        // left
-        triangles.Add(cube.BoxVertices[2]);
-        triangles.Add(cube.BoxVertices[6]);
-        triangles.Add(cube.BoxVertices[7]);
-        triangles.Add(cube.BoxVertices[7]);
-        triangles.Add(cube.BoxVertices[3]);
-        triangles.Add(cube.BoxVertices[2]);
-
-        // top
-        triangles.Add(cube.BoxVertices[0]);
-        triangles.Add(cube.BoxVertices[3]);
-        triangles.Add(cube.BoxVertices[7]);
-        triangles.Add(cube.BoxVertices[7]);
-        triangles.Add(cube.BoxVertices[4]);
-        triangles.Add(cube.BoxVertices[0]);
-
-        // right
-        triangles.Add(cube.BoxVertices[1]);
-        triangles.Add(cube.BoxVertices[0]);
-        triangles.Add(cube.BoxVertices[4]);
-        triangles.Add(cube.BoxVertices[4]);
-        triangles.Add(cube.BoxVertices[5]);
-        triangles.Add(cube.BoxVertices[1]);
-
-        // bottom
-        triangles.Add(cube.BoxVertices[1]);
-        triangles.Add(cube.BoxVertices[5]);
-        triangles.Add(cube.BoxVertices[6]);
-        triangles.Add(cube.BoxVertices[6]);
-        triangles.Add(cube.BoxVertices[2]);
-        triangles.Add(cube.BoxVertices[1]);
-
-        // back
-        triangles.Add(cube.BoxVertices[7]);
-        triangles.Add(cube.BoxVertices[6]);
-        triangles.Add(cube.BoxVertices[5]);
-        triangles.Add(cube.BoxVertices[5]);
-        triangles.Add(cube.BoxVertices[4]);
-        triangles.Add(cube.BoxVertices[7]);
-
-        // front
-        triangles.Add(cube.BoxVertices[0]);
-        triangles.Add(cube.BoxVertices[1]);
-        triangles.Add(cube.BoxVertices[2]);
-        triangles.Add(cube.BoxVertices[2]);
-        triangles.Add(cube.BoxVertices[3]);
-        triangles.Add(cube.BoxVertices[0]);
     }
 
     private Mesh GetCubeMesh()

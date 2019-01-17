@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Assets;
 using UnityEngine.Assertions;
 
@@ -116,6 +117,57 @@ namespace DescentHogFileReader
             }
 
             Length = offset - Length;
+        }
+
+        public void AddTriangles(List<int> triangles)
+        {
+            // left
+            triangles.Add(BoxVertices[2]);
+            triangles.Add(BoxVertices[6]);
+            triangles.Add(BoxVertices[7]);
+            triangles.Add(BoxVertices[7]);
+            triangles.Add(BoxVertices[3]);
+            triangles.Add(BoxVertices[2]);
+
+            // top
+            triangles.Add(BoxVertices[0]);
+            triangles.Add(BoxVertices[3]);
+            triangles.Add(BoxVertices[7]);
+            triangles.Add(BoxVertices[7]);
+            triangles.Add(BoxVertices[4]);
+            triangles.Add(BoxVertices[0]);
+
+            // right
+            triangles.Add(BoxVertices[1]);
+            triangles.Add(BoxVertices[0]);
+            triangles.Add(BoxVertices[4]);
+            triangles.Add(BoxVertices[4]);
+            triangles.Add(BoxVertices[5]);
+            triangles.Add(BoxVertices[1]);
+
+            // bottom
+            triangles.Add(BoxVertices[1]);
+            triangles.Add(BoxVertices[5]);
+            triangles.Add(BoxVertices[6]);
+            triangles.Add(BoxVertices[6]);
+            triangles.Add(BoxVertices[2]);
+            triangles.Add(BoxVertices[1]);
+
+            // back
+            triangles.Add(BoxVertices[7]);
+            triangles.Add(BoxVertices[6]);
+            triangles.Add(BoxVertices[5]);
+            triangles.Add(BoxVertices[5]);
+            triangles.Add(BoxVertices[4]);
+            triangles.Add(BoxVertices[7]);
+
+            // front
+            triangles.Add(BoxVertices[0]);
+            triangles.Add(BoxVertices[1]);
+            triangles.Add(BoxVertices[2]);
+            triangles.Add(BoxVertices[2]);
+            triangles.Add(BoxVertices[3]);
+            triangles.Add(BoxVertices[0]);
         }
     }
 }
