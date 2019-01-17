@@ -123,63 +123,85 @@ namespace DescentHogFileReader
         public void AddTriangles(List<int> triangles)
         {
             // left
-            triangles.Add(BoxVertices[2]);
-            triangles.Add(BoxVertices[6]);
-            triangles.Add(BoxVertices[7]);
-            triangles.Add(BoxVertices[7]);
-            triangles.Add(BoxVertices[3]);
-            triangles.Add(BoxVertices[2]);
+            if ((CubeMask & CubeBitMask.SideLeft) == 0)
+            {
+                triangles.Add(BoxVertices[2]);
+                triangles.Add(BoxVertices[6]);
+                triangles.Add(BoxVertices[7]);
+                triangles.Add(BoxVertices[7]);
+                triangles.Add(BoxVertices[3]);
+                triangles.Add(BoxVertices[2]);
+            }
 
             // top
-            triangles.Add(BoxVertices[0]);
-            triangles.Add(BoxVertices[3]);
-            triangles.Add(BoxVertices[7]);
-            triangles.Add(BoxVertices[7]);
-            triangles.Add(BoxVertices[4]);
-            triangles.Add(BoxVertices[0]);
+            if ((CubeMask & CubeBitMask.SideTop) == 0)
+            {
+                triangles.Add(BoxVertices[0]);
+                triangles.Add(BoxVertices[3]);
+                triangles.Add(BoxVertices[7]);
+                triangles.Add(BoxVertices[7]);
+                triangles.Add(BoxVertices[4]);
+                triangles.Add(BoxVertices[0]);
+            }
 
             // right
-            triangles.Add(BoxVertices[1]);
-            triangles.Add(BoxVertices[0]);
-            triangles.Add(BoxVertices[4]);
-            triangles.Add(BoxVertices[4]);
-            triangles.Add(BoxVertices[5]);
-            triangles.Add(BoxVertices[1]);
+            if ((CubeMask & CubeBitMask.SideRight) == 0)
+            {
+                triangles.Add(BoxVertices[1]);
+                triangles.Add(BoxVertices[0]);
+                triangles.Add(BoxVertices[4]);
+                triangles.Add(BoxVertices[4]);
+                triangles.Add(BoxVertices[5]);
+                triangles.Add(BoxVertices[1]);
+            }
+
 
             // bottom
-            triangles.Add(BoxVertices[1]);
-            triangles.Add(BoxVertices[5]);
-            triangles.Add(BoxVertices[6]);
-            triangles.Add(BoxVertices[6]);
-            triangles.Add(BoxVertices[2]);
-            triangles.Add(BoxVertices[1]);
+            if ((CubeMask & CubeBitMask.SideBottom) == 0)
+            {
+                triangles.Add(BoxVertices[1]);
+                triangles.Add(BoxVertices[5]);
+                triangles.Add(BoxVertices[6]);
+                triangles.Add(BoxVertices[6]);
+                triangles.Add(BoxVertices[2]);
+                triangles.Add(BoxVertices[1]);
+            }
 
             // back
-            triangles.Add(BoxVertices[7]);
-            triangles.Add(BoxVertices[6]);
-            triangles.Add(BoxVertices[5]);
-            triangles.Add(BoxVertices[5]);
-            triangles.Add(BoxVertices[4]);
-            triangles.Add(BoxVertices[7]);
+            if ((CubeMask & CubeBitMask.SideBack) == 0)
+            {
+                triangles.Add(BoxVertices[7]);
+                triangles.Add(BoxVertices[6]);
+                triangles.Add(BoxVertices[5]);
+                triangles.Add(BoxVertices[5]);
+                triangles.Add(BoxVertices[4]);
+                triangles.Add(BoxVertices[7]);
+            }
 
             // front
-            triangles.Add(BoxVertices[0]);
-            triangles.Add(BoxVertices[1]);
-            triangles.Add(BoxVertices[2]);
-            triangles.Add(BoxVertices[2]);
-            triangles.Add(BoxVertices[3]);
-            triangles.Add(BoxVertices[0]);
+            if ((CubeMask & CubeBitMask.SideFront) == 0)
+            {
+                triangles.Add(BoxVertices[0]);
+                triangles.Add(BoxVertices[1]);
+                triangles.Add(BoxVertices[2]);
+                triangles.Add(BoxVertices[2]);
+                triangles.Add(BoxVertices[3]);
+                triangles.Add(BoxVertices[0]);
+            }
         }
 
         public void AddUvs(List<Vector2> uvs)
         {
             for (var i = 0; i < 6; i++)
             {
-                // same uvs for all faces
-                uvs.Add(new Vector2(0, 0));
-                uvs.Add(new Vector2(1, 0));
-                uvs.Add(new Vector2(1, 1));
-                uvs.Add(new Vector2(0, 1));
+                if (Children[i] == -1 || Sides[i].Number != -1)
+                {
+                    // same uvs for all faces
+                    uvs.Add(new Vector2(0, 0));
+                    uvs.Add(new Vector2(1, 0));
+                    uvs.Add(new Vector2(1, 1));
+                    uvs.Add(new Vector2(0, 1));
+                }
             }
         }
     }
