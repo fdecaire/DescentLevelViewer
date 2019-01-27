@@ -120,7 +120,7 @@ namespace DescentHogFileReader
             Length = offset - Length;
         }
 
-        public void AddTriangles(List<int> triangles)
+        public void AddTriangles(List<int> triangles, List<Vector2> uvs)
         {
             // left
             if ((CubeMask & CubeBitMask.SideLeft) == 0)
@@ -131,6 +131,7 @@ namespace DescentHogFileReader
                 triangles.Add(BoxVertices[7]);
                 triangles.Add(BoxVertices[3]);
                 triangles.Add(BoxVertices[2]);
+                AddUvs(uvs);
             }
 
             // top
@@ -142,6 +143,7 @@ namespace DescentHogFileReader
                 triangles.Add(BoxVertices[7]);
                 triangles.Add(BoxVertices[4]);
                 triangles.Add(BoxVertices[0]);
+                AddUvs(uvs);
             }
 
             // right
@@ -153,6 +155,7 @@ namespace DescentHogFileReader
                 triangles.Add(BoxVertices[4]);
                 triangles.Add(BoxVertices[5]);
                 triangles.Add(BoxVertices[1]);
+                AddUvs(uvs);
             }
 
 
@@ -165,6 +168,7 @@ namespace DescentHogFileReader
                 triangles.Add(BoxVertices[6]);
                 triangles.Add(BoxVertices[2]);
                 triangles.Add(BoxVertices[1]);
+                AddUvs(uvs);
             }
 
             // back
@@ -176,6 +180,7 @@ namespace DescentHogFileReader
                 triangles.Add(BoxVertices[5]);
                 triangles.Add(BoxVertices[4]);
                 triangles.Add(BoxVertices[7]);
+                AddUvs(uvs);
             }
 
             // front
@@ -187,14 +192,15 @@ namespace DescentHogFileReader
                 triangles.Add(BoxVertices[2]);
                 triangles.Add(BoxVertices[3]);
                 triangles.Add(BoxVertices[0]);
+                AddUvs(uvs);
             }
         }
 
         public void AddUvs(List<Vector2> uvs)
         {
-            for (var i = 0; i < 6; i++)
+            //for (var i = 0; i < 6; i++)
             {
-                if (Children[i] == -1 || Sides[i].Number != -1)
+                //if (Children[i] == -1 || Sides[i].Number != -1)
                 {
                     // same uvs for all faces
                     uvs.Add(new Vector2(0, 0));

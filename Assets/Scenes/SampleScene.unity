@@ -214,9 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointPrefab: {fileID: 2396435756986801433, guid: b1bb2b3985edcbb499ce175fd2aa076d,
     type: 3}
-  cubeLength: 5
-  cubeWidth: 5
-  cubeHeight: 5
+  material: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!4 &528665774
 Transform:
   m_ObjectHideFlags: 0
