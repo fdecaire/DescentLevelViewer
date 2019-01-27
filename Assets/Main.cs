@@ -6,19 +6,11 @@ using UnityEngine;
 
 public class Main : MonoBehaviour
 {
-    public Material material;
     private List<string> _textureNames = new List<string>();
 
     // Start is called before the first frame update
     void Start()
     {
-        //Load a Texture (Assets/Resources/Textures/texture01.png)
-        var texture = Resources.Load<Texture2D>("Textures/rock001");
-        material.mainTexture = texture;
-
-        var meshRenderer = gameObject.GetComponent<MeshRenderer>();
-        meshRenderer.material = material;
-
         ReadHogFile();
     }
 
