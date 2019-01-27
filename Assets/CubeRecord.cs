@@ -93,7 +93,7 @@ namespace DescentHogFileReader
                 if (Children[j] == -1 || Sides[j].Number != -1)
                 {
                     // primary texture
-                    var primaryTexture = BitConverter.ToInt16(data, offset);
+                    var primaryTexture = BitConverter.ToUInt16(data, offset);
                     Sides[j].PrimaryTexture = primaryTexture & 0x7fff;
                     offset += 2;
                     if ((primaryTexture & 0x8000) != 0)

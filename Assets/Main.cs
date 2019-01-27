@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using DescentHogFileReader;
 using UnityEngine;
 
 public class Main : MonoBehaviour
 {
     public Material material;
+    private List<string> _textureNames = new List<string>();
 
     // Start is called before the first frame update
     void Start()
@@ -24,9 +26,10 @@ public class Main : MonoBehaviour
     {
         Rdl rdlFile;
         byte[] buffer = File.ReadAllBytes("Assets/DESCENT.HOG");
-        char[] fileSignature = {(char) buffer[0], (char) buffer[1], (char) buffer[2]};
 
         int index = 3;
+
+        ReadTextureNames();
 
         var fileData = new List<HogFile>();
 
@@ -41,7 +44,7 @@ public class Main : MonoBehaviour
                     // read one rdl file and break out of the loop
                     rdlFile = new Rdl(fileData[fileData.Count - 1]);
 
-                    //TODO: temporary
+                    //TODO: temporary UVs
                     Vector2[] uvs0 =
                     {
                         new Vector2(0, 0),
@@ -56,21 +59,34 @@ public class Main : MonoBehaviour
                     {
                         for (var i = 0; i < 6; i++)
                         {
-                            // left side
-                            var vertices = new Vector3[]
+                            if (cube.Children[i] == -1 || cube.Sides[i].Number != -1)
                             {
-                                new Vector3((float) rdlFile.Vertices[cube.BoxVertices[sideList[i,0]]].X, (float) rdlFile.Vertices[cube.BoxVertices[sideList[i,0]]].Y, (float) rdlFile.Vertices[cube.BoxVertices[sideList[i,0]]].Z),
-                                new Vector3((float) rdlFile.Vertices[cube.BoxVertices[sideList[i,1]]].X, (float) rdlFile.Vertices[cube.BoxVertices[sideList[i,1]]].Y, (float) rdlFile.Vertices[cube.BoxVertices[sideList[i,1]]].Z),
-                                new Vector3((float) rdlFile.Vertices[cube.BoxVertices[sideList[i,2]]].X, (float) rdlFile.Vertices[cube.BoxVertices[sideList[i,2]]].Y, (float) rdlFile.Vertices[cube.BoxVertices[sideList[i,2]]].Z),
-                                new Vector3((float) rdlFile.Vertices[cube.BoxVertices[sideList[i,3]]].X, (float) rdlFile.Vertices[cube.BoxVertices[sideList[i,3]]].Y, (float) rdlFile.Vertices[cube.BoxVertices[sideList[i,3]]].Z),
-                            };
+                                // left side
+                                var vertices = new Vector3[]
+                                {
+                                    new Vector3((float) rdlFile.Vertices[cube.BoxVertices[sideList[i, 0]]].X, (float) rdlFile.Vertices[cube.BoxVertices[sideList[i, 0]]].Y, (float) rdlFile.Vertices[cube.BoxVertices[sideList[i, 0]]].Z),
+                                    new Vector3((float) rdlFile.Vertices[cube.BoxVertices[sideList[i, 1]]].X, (float) rdlFile.Vertices[cube.BoxVertices[sideList[i, 1]]].Y, (float) rdlFile.Vertices[cube.BoxVertices[sideList[i, 1]]].Z),
+                                    new Vector3((float) rdlFile.Vertices[cube.BoxVertices[sideList[i, 2]]].X, (float) rdlFile.Vertices[cube.BoxVertices[sideList[i, 2]]].Y, (float) rdlFile.Vertices[cube.BoxVertices[sideList[i, 2]]].Z),
+                                    new Vector3((float) rdlFile.Vertices[cube.BoxVertices[sideList[i, 3]]].X, (float) rdlFile.Vertices[cube.BoxVertices[sideList[i, 3]]].Y, (float) rdlFile.Vertices[cube.BoxVertices[sideList[i, 3]]].Z),
+                                };
 
-                            AddWall("ceil014", vertices, uvs0);
+                                AddWall(_textureNames[cube.Sides[i].PrimaryTexture], vertices, uvs0);
+                            }
                         }
                     }
 
                     break;
                 }
+        }
+    }
+
+    private void ReadTextureNames()
+    {
+        // read the texture names (these were dumped from the PIG file)
+        var textureNameList = Regex.Split(File.ReadAllText(@"Assets/texture_names.txt"), "\r\n");
+        for (var i = 0; i < textureNameList.Length; i++)
+        {
+            _textureNames.Add(textureNameList[i]);
         }
     }
 
