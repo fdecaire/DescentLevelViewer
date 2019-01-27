@@ -30,22 +30,7 @@ namespace DescentHogFileReader
 
         public HogFile(byte[] buffer, int index)
         {
-            var fileName = new char[13];
-
-            var lastChar = false;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!lastChar)
-                    fileName[i] = (char) buffer[i + index];
-
-                if (fileName[i] == 0 || lastChar)
-                {
-                    fileName[i] = ' ';
-                    lastChar = true;
-                }
-            }
-
-            FileName = new string(fileName);
+            FileName = buffer.ByteArrayToString(index, 13);
             FileName = FileName.Trim();
 
             FileSize = BitConverter.ToInt32(buffer, 13 + index);
@@ -57,7 +42,5 @@ namespace DescentHogFileReader
                 Data[i] = buffer[i + index + 13 + 4];
             }
         }
-
-     
     }
 }
