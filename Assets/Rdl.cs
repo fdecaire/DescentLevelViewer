@@ -27,7 +27,7 @@ namespace DescentHogFileReader
             ObjectsOffset = BitConverter.ToInt32(hogFile.Data, 12);
             FileSize = BitConverter.ToInt32(hogFile.Data, 16);
 
-            var ver = 0; // one byte for version
+            var ver = hogFile.Data[MineDataOffset]; // one byte for version
             var vertexCount = BitConverter.ToUInt16(hogFile.Data, MineDataOffset + 1);
             var cubeCount = BitConverter.ToUInt16(hogFile.Data, MineDataOffset + 3);
 
