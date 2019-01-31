@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets;
-using UnityEngine.Assertions;
+using System.IO;
 
 //http://www.descent2.com/ddn/specs/rdl/
 namespace DescentHogFileReader
@@ -61,6 +60,19 @@ namespace DescentHogFileReader
                 Cubes.Add(new CubeRecord(hogFile.Data, offset));
                 offset += Cubes[Cubes.Count-1].Length;
             }
+
+            /*
+            File.Delete(@"c:\temp\DescentAssets\cube_texture_list.txt");
+
+            for (var i = 0; i < cubeCount; i++)
+            {
+                File.AppendAllText(@"c:\temp\DescentAssets\cube_texture_list.txt", Environment.NewLine + "Cube:" + i + Environment.NewLine);
+                for (var j = 0; j < 6; j++)
+                {
+                    File.AppendAllText(@"c:\temp\DescentAssets\cube_texture_list.txt", Cubes[i].Sides[j].WallName+":" + Cubes[i].Sides[j].PrimaryTexture + Environment.NewLine);
+                }
+            }
+            */
         }
     }
 }

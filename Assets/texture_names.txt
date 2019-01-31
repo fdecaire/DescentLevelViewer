@@ -253,7 +253,7 @@ muzl05
 muzl06
 muzl06
 muzl06
-pwr01
+pwr01_0
 pwr01
 pwr01
 pwr01
@@ -1040,13 +1040,13 @@ misc063
 misc075
 fan03
 fram06
+arw01_0
 arw01
 arw01
 arw01
 arw01
 arw01
-arw01
-misc17
+misc17+0
 misc17
 misc17
 misc17
@@ -1077,10 +1077,10 @@ blown06
 misc09
 misc09
 misc09
+misc11_0
 misc11
 misc11
 misc11
-misc11
 ctrl04
 ctrl04
 ctrl04
@@ -1089,7 +1089,7 @@ ctrl04
 ctrl04
 ctrl04
 ctrl04
-ctrl01
+ctrl01_0
 ctrl01
 ctrl01
 ctrl01
@@ -1388,11 +1388,11 @@ door10
 door10
 door10
 door10
+door24_0
 door24
 door24
 door24
 door24
-door24
 door08
 door08
 door08
@@ -1455,7 +1455,7 @@ door14
 door14
 door14
 door14
-door17
+door17_0
 door17
 door17
 door17
@@ -1546,7 +1546,7 @@ door30
 door30
 door30
 door30
-door31
+door31_0
 door31
 door31
 door31

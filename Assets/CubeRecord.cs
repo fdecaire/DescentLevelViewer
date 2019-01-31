@@ -19,6 +19,7 @@ namespace DescentHogFileReader
 
         public CubeRecord(byte [] data, int offset)
         {
+            var wallNameList = new[] {"Left", "Top", "Right", "Bottom", "Back", "Front"};
             Length = offset;
 
             CubeMask = (CubeBitMask)data[offset++];
@@ -73,6 +74,7 @@ namespace DescentHogFileReader
             for (var j = 0; j < 6; j++)
             {
                 Sides[j] = new Wall();
+                Sides[j].WallName = wallNameList[j];
                 if (((int)WallsMask & (1 << j)) != 0)
                 {
                     Sides[j].Number = data[offset++];
@@ -90,6 +92,8 @@ namespace DescentHogFileReader
             // read textures for each side
             for (var j = 0; j < 6; j++)
             {
+                Sides[j].PrimaryTexture = -1;
+                Sides[j].SecondaryTexture = -1;
                 if (Children[j] == -1 || Sides[j].Number != -1)
                 {
                     // primary texture

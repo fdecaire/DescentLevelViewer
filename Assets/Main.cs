@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
+using Assets;
 using DescentHogFileReader;
 using UnityEngine;
 
@@ -22,6 +24,7 @@ public class Main : MonoBehaviour
         int index = 3;
 
         ReadTextureNames();
+        var textureTranslation = new TextureTranslation();
 
         var fileData = new List<HogFile>();
 
@@ -35,6 +38,10 @@ public class Main : MonoBehaviour
                 {
                     // read one rdl file and break out of the loop
                     rdlFile = new Rdl(fileData[fileData.Count - 1]);
+
+                    // dump all primary textures used in this rdl (test)
+                    var distinctTextures = new List<int>();
+                    File.Delete(@"c:\temp\DistinctTextures.txt");
 
                     //TODO: temporary UVs
                     Vector2[] uvs0 =
@@ -53,6 +60,12 @@ public class Main : MonoBehaviour
                         {
                             if (cube.Children[i] == -1 || cube.Sides[i].Number != -1)
                             {
+                                // test: gather distinct textures
+                                if (!distinctTextures.Contains(cube.Sides[i].PrimaryTexture))
+                                {
+                                    distinctTextures.Add(cube.Sides[i].PrimaryTexture);
+                                }
+
                                 // left side
                                 var vertices = new Vector3[]
                                 {
@@ -62,7 +75,7 @@ public class Main : MonoBehaviour
                                     new Vector3((float) rdlFile.Vertices[cube.BoxVertices[sideList[i, 3]]].X, (float) rdlFile.Vertices[cube.BoxVertices[sideList[i, 3]]].Y, (float) rdlFile.Vertices[cube.BoxVertices[sideList[i, 3]]].Z),
                                 };
 
-                                AddWall(_textureNames[cube.Sides[i].PrimaryTexture], vertices, uvs0);
+                                AddWall(_textureNames[textureTranslation[cube.Sides[i].PrimaryTexture]], vertices, uvs0);
                             }
                         }
                     }
