@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using Assets;
 
 //http://www.descent2.com/ddn/specs/rdl/
 namespace DescentHogFileReader
 {
     public class Rdl
     {
+        public string LevelName { get; set; }
         public string Signature { get; set; }
         public int Version { get; set; }
         public int MineDataOffset { get; set; }
@@ -15,8 +18,10 @@ namespace DescentHogFileReader
         public List<Vertex> Vertices { get; set; }
         public List<CubeRecord> Cubes { get; set; }
 
-        public Rdl(HogFile hogFile)
+        public Rdl(HogFile hogFile, string levelName)
         {
+            LevelName = levelName;
+
             char[] sig = { (char)hogFile.Data[0], (char)hogFile.Data[1], (char)hogFile.Data[2], (char)hogFile.Data[3] };
 
             Signature = new string(sig); //Should be LVLP
@@ -62,15 +67,32 @@ namespace DescentHogFileReader
             }
 
             /*
-            File.Delete(@"c:\temp\DescentAssets\cube_texture_list.txt");
+            var path = $@"c:\temp\DescentAssets\cube_texture_list_level_{LevelName}.txt";
+            File.Delete(path);
+
+            // dump the distinct texture list with a cube number and it's side
+            var sideList = new Dictionary<int, string>();
+            var translationTable = new TextureTranslation();
 
             for (var i = 0; i < cubeCount; i++)
             {
-                File.AppendAllText(@"c:\temp\DescentAssets\cube_texture_list.txt", Environment.NewLine + "Cube:" + i + Environment.NewLine);
                 for (var j = 0; j < 6; j++)
                 {
-                    File.AppendAllText(@"c:\temp\DescentAssets\cube_texture_list.txt", Cubes[i].Sides[j].WallName+":" + Cubes[i].Sides[j].PrimaryTexture + Environment.NewLine);
+                    if (Cubes[i].Sides[j].PrimaryTexture > -1)
+                    {
+                        var result = "Cube:" + i + " Wall:" + Cubes[i].Sides[j].WallName + " Texture:" + Cubes[i].Sides[j].PrimaryTexture + Environment.NewLine;
+
+                        if (!sideList.ContainsKey(Cubes[i].Sides[j].PrimaryTexture) && translationTable[Cubes[i].Sides[j].PrimaryTexture] == 255)
+                        {
+                            sideList[Cubes[i].Sides[j].PrimaryTexture] = result;
+                        }
+                    }
                 }
+            }
+
+            foreach (var side in sideList.OrderBy(x => x.Key))
+            {
+                File.AppendAllText(path, side.Value);
             }
             */
         }

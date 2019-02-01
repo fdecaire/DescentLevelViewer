@@ -1113,6 +1113,7 @@ ctrl03
 ctrl03
 ctrl03
 ctrl03
+misc14_0
 misc14
 misc14
 misc14
@@ -1120,8 +1121,7 @@ misc14
 misc14
 misc14
 misc14
-misc14
-misc16
+misc16_0
 misc16
 misc16
 misc16
@@ -1469,7 +1469,7 @@ door18
 door18
 door18
 door18
-door19
+door19_0
 door19
 door19
 door19
@@ -1484,12 +1484,12 @@ door20
 door20
 door20
 door20
+door21_0
 door21
 door21
 door21
 door21
 door21
-door21
 door22
 door22
 door22
@@ -1498,7 +1498,7 @@ door22
 door22
 door22
 door22
-door23
+door23_0
 door23
 door23
 door23
@@ -1532,7 +1532,7 @@ door28
 door28
 door28
 door28
-door29
+door29_0
 door29
 door29
 door29

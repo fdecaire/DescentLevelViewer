@@ -33,11 +33,12 @@ public class Main : MonoBehaviour
             fileData.Add(new HogFile(buffer, index));
             index += fileData[fileData.Count - 1].FileSize + 13 + 4;
 
-            if (fileData[fileData.Count - 1].FileName == "level01.rdl")
+            if (fileData[fileData.Count - 1].FileName == "level04.rdl")
+            {
                 if (fileData[fileData.Count - 1].FileType == HogFileType.RDL)
                 {
                     // read one rdl file and break out of the loop
-                    rdlFile = new Rdl(fileData[fileData.Count - 1]);
+                    rdlFile = new Rdl(fileData[fileData.Count - 1], fileData[fileData.Count - 1].FileName);
 
                     // dump all primary textures used in this rdl (test)
                     var distinctTextures = new List<int>();
@@ -82,6 +83,7 @@ public class Main : MonoBehaviour
 
                     break;
                 }
+            }
         }
     }
 
