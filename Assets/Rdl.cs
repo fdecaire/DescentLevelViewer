@@ -65,36 +65,6 @@ namespace DescentHogFileReader
                 Cubes.Add(new CubeRecord(hogFile.Data, offset));
                 offset += Cubes[Cubes.Count-1].Length;
             }
-
-            /*
-            var path = $@"c:\temp\DescentAssets\cube_texture_list_level_{LevelName}.txt";
-            File.Delete(path);
-
-            // dump the distinct texture list with a cube number and it's side
-            var sideList = new Dictionary<int, string>();
-            var translationTable = new TextureTranslation();
-
-            for (var i = 0; i < cubeCount; i++)
-            {
-                for (var j = 0; j < 6; j++)
-                {
-                    if (Cubes[i].Sides[j].PrimaryTexture > -1)
-                    {
-                        var result = "Cube:" + i + " Wall:" + Cubes[i].Sides[j].WallName + " Texture:" + Cubes[i].Sides[j].PrimaryTexture + Environment.NewLine;
-
-                        if (!sideList.ContainsKey(Cubes[i].Sides[j].PrimaryTexture) && translationTable[Cubes[i].Sides[j].PrimaryTexture] == 255)
-                        {
-                            sideList[Cubes[i].Sides[j].PrimaryTexture] = result;
-                        }
-                    }
-                }
-            }
-
-            foreach (var side in sideList.OrderBy(x => x.Key))
-            {
-                File.AppendAllText(path, side.Value);
-            }
-            */
         }
     }
 }
