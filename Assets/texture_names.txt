@@ -1062,7 +1062,7 @@ misc17
 misc17
 misc17
 misc17
-fan01
+fan01_0
 fan01
 fan01
 fan01
@@ -1081,7 +1081,7 @@ misc11_0
 misc11
 misc11
 misc11
-ctrl04
+ctrl04_0
 ctrl04
 ctrl04
 ctrl04
@@ -1097,6 +1097,7 @@ ctrl01
 ctrl01
 ctrl01
 ctrl01
+ctrl02_0
 ctrl02
 ctrl02
 ctrl02
@@ -1104,8 +1105,7 @@ ctrl02
 ctrl02
 ctrl02
 ctrl02
-ctrl02
-ctrl03
+ctrl03_0
 ctrl03
 ctrl03
 ctrl03
@@ -1148,7 +1148,7 @@ misc062
 misc062
 misc062
 blown07
-misc065
+misc065_0
 misc065
 misc065
 misc065
@@ -1156,7 +1156,7 @@ misc065
 misc065
 misc065
 blown03
-misc066
+misc066_0
 misc066
 misc066
 misc066
@@ -1382,7 +1382,7 @@ door05
 door05
 door05
 door05
-door10
+door10_0
 door10
 door10
 door10
@@ -1405,7 +1405,7 @@ door08
 door08
 door08
 door08
-door11
+door11_0
 door11
 door11
 door11
@@ -1461,7 +1461,7 @@ door17
 door17
 door17
 door17
-door18
+door18_0
 door18
 door18
 door18
@@ -1477,7 +1477,7 @@ door19
 door19
 door19
 door19
-door20
+door20_0
 door20
 door20
 door20
@@ -1490,7 +1490,7 @@ door21
 door21
 door21
 door21
-door22
+door22_0
 door22
 door22
 door22
@@ -1505,14 +1505,14 @@ door23
 door23
 door23
 door23
+door25_0
 door25
 door25
 door25
 door25
 door25
 door25
-door25
-door26
+door26_0
 door26
 door26
 door26
@@ -1539,7 +1539,7 @@ door29
 door29
 door29
 door29
-door30
+door30_0
 door30
 door30
 door30
