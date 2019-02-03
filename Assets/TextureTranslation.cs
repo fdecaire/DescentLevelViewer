@@ -179,41 +179,156 @@ namespace Assets
             _translationTable.Add(170, 886); // metl020
             _translationTable.Add(171, 24); // metl021
             _translationTable.Add(172, 887); // metl023
-            _translationTable.Add(173, -1); // 
-            _translationTable.Add(174, -1); // 
-            _translationTable.Add(175, -1); // 
-            _translationTable.Add(176, -1); // 
-            _translationTable.Add(177, -1); // 
-            _translationTable.Add(178, -1); // 
-            _translationTable.Add(179, -1); // 
+            _translationTable.Add(173, 888); // metl024
+            _translationTable.Add(174, 889); // metl026
+            _translationTable.Add(175, 890); // metl029
+            _translationTable.Add(176, 891); // metl030
+            _translationTable.Add(177, 892); // metl031
+            _translationTable.Add(178, 893); // 
+            _translationTable.Add(179, 896); // 
+
+            _translationTable.Add(181, 894); // metl039
+
+            _translationTable.Add(183, 898); // metl041
+            _translationTable.Add(186, -1); // 
+            _translationTable.Add(187, -1); // 
+            _translationTable.Add(188, -1); // 
+            _translationTable.Add(189, -1); // 
+            _translationTable.Add(190, -1); // 
+            _translationTable.Add(191, -1); // 
+            _translationTable.Add(192, -1); // 
+
+            _translationTable.Add(194, -1); // 
+
+            _translationTable.Add(196, -1); // 
+            _translationTable.Add(197, -1); // 
+            _translationTable.Add(198, -1); // 
+            _translationTable.Add(199, -1); // 
+
+            _translationTable.Add(201, -1); // 
+            _translationTable.Add(202, -1); // 
+            _translationTable.Add(203, -1); // 
+            _translationTable.Add(204, -1); // 
+            _translationTable.Add(205, -1); // 
+            _translationTable.Add(206, -1); // 
+            _translationTable.Add(207, -1); // 
+            _translationTable.Add(208, -1); // 
+            _translationTable.Add(209, -1); // 
+            _translationTable.Add(210, -1); // 
+
+            _translationTable.Add(212, -1); // 
+            _translationTable.Add(213, -1); // 
+            _translationTable.Add(214, -1); // 
+
+            _translationTable.Add(217, -1); //
+            _translationTable.Add(218, -1); // 
+            _translationTable.Add(219, -1); // 
+            _translationTable.Add(220, -1); // 
+            _translationTable.Add(221, -1); // 
+            _translationTable.Add(222, -1); // 
+            _translationTable.Add(223, -1); // 
+
+            _translationTable.Add(226, -1); // 
+            _translationTable.Add(227, -1); // 
+            _translationTable.Add(228, -1); // 
+            _translationTable.Add(229, -1); // 
+            _translationTable.Add(230, -1); // 
+            _translationTable.Add(231, -1); // 
+            _translationTable.Add(232, -1); // 
+            _translationTable.Add(233, -1); // 
+            _translationTable.Add(234, -1); // 
+            _translationTable.Add(235, -1); // 
+            _translationTable.Add(236, -1); // 
+            _translationTable.Add(237, -1); // 
+            _translationTable.Add(238, -1); // 
+
+            _translationTable.Add(240, -1); // 
+            _translationTable.Add(241, -1); // 
+            _translationTable.Add(242, -1); // 
+            _translationTable.Add(243, -1); // 
+            _translationTable.Add(244, -1); // 
+
+            _translationTable.Add(246, -1); // 
+
+            _translationTable.Add(249, -1); // 
+            _translationTable.Add(250, -1); // 
+
+            _translationTable.Add(252, -1); // 
 
             _translationTable.Add(255, 970); // metl139
+            _translationTable.Add(256, -1); // 
             _translationTable.Add(257, 731); // rock014
             _translationTable.Add(258, 973); // brig002
             _translationTable.Add(259, 974); // brig003
             _translationTable.Add(260, 975); // brig004
             _translationTable.Add(261, 976); // exit01
             _translationTable.Add(262, 977); // exit02
+            _translationTable.Add(263, -1); // 
             _translationTable.Add(270, 985); // ceil014
             _translationTable.Add(271, 987); // ceil015
             _translationTable.Add(272, 987); // ceil016
+            _translationTable.Add(273, -1); // 
             _translationTable.Add(274, 989); // ceil018
             _translationTable.Add(275, 990); // ceil019
             _translationTable.Add(276, 991); // ceil037
+            _translationTable.Add(281, -1); // 
+
+            _translationTable.Add(284, -1); // 
+
+            _translationTable.Add(289, -1); // 
+
+            _translationTable.Add(313, -1); // 
+
             _translationTable.Add(315, 1030); // misc044
+            _translationTable.Add(316, -1); // 
+
             _translationTable.Add(322, 1037); // misc059
+
+            _translationTable.Add(325, -1); // 
+
             _translationTable.Add(327, 1042); // arw01
             _translationTable.Add(328, 1048); // misc17
+            _translationTable.Add(329, -1); // 
             _translationTable.Add(333, 1079); // misc11
+            _translationTable.Add(334, -1); // 
             _translationTable.Add(335, 1091); // ctrl01
+            _translationTable.Add(336, -1); // 
+            _translationTable.Add(337, -1); // 
             _translationTable.Add(338, 1115); // misc14
             _translationTable.Add(339, 1123); // misc16
+
+            _translationTable.Add(347, -1); // 
+
+            _translationTable.Add(349, -1); // 
+
+            _translationTable.Add(413, -1); // 
+
             _translationTable.Add(419, 1390); // door24
+
+            _translationTable.Add(436, -1); // 
+
             _translationTable.Add(486, 1457); // door17
+
+            _translationTable.Add(492, -1); // 
+
             _translationTable.Add(500, 1471); // door19
+
+            _translationTable.Add(508, -1); // 
+
             _translationTable.Add(515, 1486); // door21
+
+            _translationTable.Add(521, -1); // 
+
             _translationTable.Add(529, 1500); // door23
+
+            _translationTable.Add(536, -1); // 
+
+            _translationTable.Add(543, -1); // 
+
             _translationTable.Add(563, 1534); // door29
+
+            _translationTable.Add(570, -1); // 
+
             _translationTable.Add(577, 1548); // door31
         }
 

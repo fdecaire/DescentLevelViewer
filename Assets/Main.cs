@@ -33,7 +33,7 @@ public class Main : MonoBehaviour
         {
             fileData.Add(new HogFile(buffer, index));
             index += fileData[fileData.Count - 1].FileSize + 13 + 4;
-            
+            /*
             if (fileData[fileData.Count - 1].FileName == "level15.rdl")
             {
                 if (fileData[fileData.Count - 1].FileType == HogFileType.RDL)
@@ -74,10 +74,10 @@ public class Main : MonoBehaviour
                     break;
                 }
             }
-            
+            */
         }
 
-        //DumpDistinctMissingTextures(fileData);
+        DumpDistinctMissingTextures(fileData);
     }
 
     private void DumpDistinctMissingTextures(List<HogFile> fileData)
