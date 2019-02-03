@@ -174,7 +174,18 @@ namespace Assets
             _translationTable.Add(164, 881); // metl014
             _translationTable.Add(165, 882); // metl015
             _translationTable.Add(166, 25); //  metl016
-
+            _translationTable.Add(167, 883); // metl017
+            _translationTable.Add(169, 885); // metl019
+            _translationTable.Add(170, 886); // metl020
+            _translationTable.Add(171, 24); // metl021
+            _translationTable.Add(172, 887); // metl023
+            _translationTable.Add(173, -1); // 
+            _translationTable.Add(174, -1); // 
+            _translationTable.Add(175, -1); // 
+            _translationTable.Add(176, -1); // 
+            _translationTable.Add(177, -1); // 
+            _translationTable.Add(178, -1); // 
+            _translationTable.Add(179, -1); // 
 
             _translationTable.Add(255, 970); // metl139
             _translationTable.Add(257, 731); // rock014

@@ -34,18 +34,12 @@ public class Main : MonoBehaviour
             fileData.Add(new HogFile(buffer, index));
             index += fileData[fileData.Count - 1].FileSize + 13 + 4;
             
-
-            /*
             if (fileData[fileData.Count - 1].FileName == "level15.rdl")
             {
                 if (fileData[fileData.Count - 1].FileType == HogFileType.RDL)
                 {
                     // read one rdl file and break out of the loop
                     rdlFile = new Rdl(fileData[fileData.Count - 1], fileData[fileData.Count - 1].FileName);
-
-                    // dump all primary textures used in this rdl (test)
-                    var distinctTextures = new List<int>();
-                    File.Delete(@"c:\temp\DistinctTextures.txt");
 
                     //TODO: temporary UVs
                     Vector2[] uvs0 =
@@ -64,13 +58,6 @@ public class Main : MonoBehaviour
                         {
                             if (cube.Children[i] == -1 || cube.Sides[i].Number != -1)
                             {
-                                // test: gather distinct textures
-                                if (!distinctTextures.Contains(cube.Sides[i].PrimaryTexture))
-                                {
-                                    distinctTextures.Add(cube.Sides[i].PrimaryTexture);
-                                }
-
-                                // left side
                                 var vertices = new Vector3[]
                                 {
                                     new Vector3((float) rdlFile.Vertices[cube.BoxVertices[sideList[i, 0]]].X, (float) rdlFile.Vertices[cube.BoxVertices[sideList[i, 0]]].Y, (float) rdlFile.Vertices[cube.BoxVertices[sideList[i, 0]]].Z),
@@ -87,10 +74,10 @@ public class Main : MonoBehaviour
                     break;
                 }
             }
-            */
+            
         }
 
-        DumpDistinctMissingTextures(fileData);
+        //DumpDistinctMissingTextures(fileData);
     }
 
     private void DumpDistinctMissingTextures(List<HogFile> fileData)
