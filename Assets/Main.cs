@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,6 +11,7 @@ using UnityEngine;
 public class Main : MonoBehaviour
 {
     private List<string> _textureNames = new List<string>();
+    private List<AnimatedTexture> _animations = new List<AnimatedTexture>();
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +36,7 @@ public class Main : MonoBehaviour
             fileData.Add(new HogFile(buffer, index));
             index += fileData[fileData.Count - 1].FileSize + 13 + 4;
             
-            if (fileData[fileData.Count - 1].FileName == "level14.rdl")
+            if (fileData[fileData.Count - 1].FileName == "level01.rdl")
             {
                 if (fileData[fileData.Count - 1].FileType == HogFileType.RDL)
                 {
@@ -149,20 +151,62 @@ public class Main : MonoBehaviour
             (UnityEngine.MeshRenderer)
             o.AddComponent(typeof(MeshRenderer));
 
-        var material = new Material(Shader.Find("Diffuse"));
-        meshRenderer.materials = new Material[1];
-        meshRenderer.materials[0] = material;
+        // check for animation strip
+        var textureStripName = textureName.Replace("_0", "") + "_strip";
+        if (textureName.EndsWith("_0") && File.Exists($"Assets/Resources/Textures/Animations/{textureStripName}.png"))
+        {
+            var animatedTexture = new AnimatedTexture();
+            animatedTexture.AnimationMaterial = new Material(Shader.Find("Transparent/Diffuse"));
+            meshRenderer.materials = new Material[1];
+            meshRenderer.materials[0] = animatedTexture.AnimationMaterial;
 
-        //Load a Texture (Assets/Resources/Textures/texture01.png)
-        var texture = Resources.Load<Texture2D>($"Textures/{textureName}");
-        material.mainTexture = texture;
+            //Load the corresponding animated texture strip
+            
+            var texture = Resources.Load<Texture2D>($"Textures/Animations/{textureStripName}");
+            animatedTexture.AnimationMaterial.mainTexture = texture;
+            meshRenderer.material = animatedTexture.AnimationMaterial;
 
-        meshRenderer.material = material;
+            animatedTexture.FrameCounter = 0;
+            animatedTexture.CloseOpen = false;
+            animatedTexture.TotalFrames = texture.width / texture.height;
+            animatedTexture.AnimationMaterial.mainTextureScale = new Vector2(1.0f / animatedTexture.TotalFrames, 1.0f);
+            _animations.Add(animatedTexture);
+        }
+        else
+        {
+            var material = new Material(Shader.Find("Diffuse"));
+            meshRenderer.materials = new Material[1];
+            meshRenderer.materials[0] = material;
+
+            //Load a Texture (Assets/Resources/Textures/texture01.png)
+            var texture = Resources.Load<Texture2D>($"Textures/{textureName}");
+            material.mainTexture = texture;
+            meshRenderer.material = material;
+        }
 
         mesh.Clear();
         mesh.vertices = vertices;
         mesh.triangles = triangles;
         mesh.uv = uvs;
         mesh.RecalculateNormals();
+    }
+
+    void Update()
+    {
+        StartCoroutine("PlayLoop", 0.10f);
+    }
+
+    IEnumerator PlayLoop(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        foreach (var animation in _animations)
+        {
+            animation.FrameCounter++;
+            animation.FrameCounter = animation.FrameCounter % animation.TotalFrames;
+            animation.AnimationMaterial.mainTextureOffset = new Vector2(1.0f / animation.TotalFrames * animation.FrameCounter, 1.0f);
+        }
+
+        StopCoroutine("PlayLoop");
     }
 }

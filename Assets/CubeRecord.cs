@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using Assets;
-using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace DescentHogFileReader
 {
