@@ -47,9 +47,9 @@ public class Main : MonoBehaviour
                     Vector2[] uvs0 =
                     {
                         new Vector2(0, 0),
-                        new Vector2(1, 0),
-                        new Vector2(1, 1),
                         new Vector2(0, 1),
+                        new Vector2(1, 1),
+                        new Vector2(1, 0),
                     };
 
                     var sideList = new int [6, 4] {{2, 6, 7, 3}, {0, 3, 7, 4}, {1, 0, 4, 5}, {1, 5, 6, 2}, {7, 6, 5, 4}, {0, 1, 2, 3}};
